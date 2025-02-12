@@ -31,6 +31,6 @@ jobs:
           export PNPM_HOME="${HOME}/Library/pnpm";
           export PATH="${PNPM_HOME}:${PATH}";
           pnpm install;
-          pnpm publish --access public;
+          pnpm publish --access public --no-git-checks;
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
