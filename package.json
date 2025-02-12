@@ -6,6 +6,9 @@
   "bin": {
     "lt-cli": "dist/bin/run.js"
   },
+  "repository": {
+    "url": "https://github.com/phoenx34/cli-tool.git"
+  },
   "type": "module",
   "oclif": {
     "bin": "lt-cli",
