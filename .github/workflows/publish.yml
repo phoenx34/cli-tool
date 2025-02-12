@@ -18,8 +18,19 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: '@phoenx34'
       - name: Install dependencies
-        run: pnpm i
+        run: 
+          corepack enable;
+          corepack prepare pnpm@latest-8 --activate;
+          export PNPM_HOME="${HOME}/Library/pnpm";
+          export PATH="${PNPM_HOME}:${PATH}";
+          pnpm install;
       - name: Publish package
-        run: pnpm publish --access public
+        run: 
+          corepack enable;
+          corepack prepare pnpm@latest-8 --activate;
+          export PNPM_HOME="${HOME}/Library/pnpm";
+          export PATH="${PNPM_HOME}:${PATH}";
+          pnpm install;
+          pnpm publish --access public;
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
