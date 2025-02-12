@@ -37,3 +37,5 @@ I chose to use PNPM for this project out of personal preference for a node packa
 - Delete pnpm_lock.yaml (this will be replaced by package-lock.json)
 - Replace all pnpm calls to npm in package.json
 - Now you can run npm install
+
+You will notice that pnpm pack generates a .tgz file. The next steps for this project would be to publish the .tgz file to a node package registry, then to install the CLI, all you would need to do is `$ pnpm add -g @phoenx34/lt-cli` without even pulling this repository.
