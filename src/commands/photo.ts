@@ -21,8 +21,10 @@ export default class GetPhoto extends Command {
   async run() {
     const { flags } = await this.parse(GetPhoto);
 
+    // Fetch the photo data by ID
     const photoData: Photo[] = await getPhotoById(flags.id);
 
+    // Render the table with the provided photo data
     const table = TtyTable(TABLE_HEADERS, photoData);
     this.log(table.render());
   }

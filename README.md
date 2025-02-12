@@ -8,13 +8,6 @@
   - `$ brew install pnpm`
   - `$ pnpm setup`
 
-> _NOTE:_ If you receive an error regarding the need to run pnpm setup again, you will need to manually add an export reference in your local .bashrc or .zshrc for PNPM_HOME:
->
-> ```bash
-> export PNPM_HOME=~/Library/pnpm
-> export PATH=$PNPM_HOME:$PATH
-> ```
-
 ## Local Installation
 
 1. CD into root folder of project
