@@ -1,6 +1,19 @@
 # LT-CLI
 
-## Prerequisites
+## QUICK INSTALL (Experimental) 
+
+This works with any package manager (yarn, pnpm, npm). Below instructions are for npm but feel free to use what you prefer.
+
+- Generate a personal access token in github -> settings -> developer settings -> personal access token (classic) and grant it read:packages permissions
+- run `npm config set -g @phoenx34:registry="https://npm.pkg.github.com"`
+- run `npm config set -g //npm.pkg.github.com/:_authToken=PERSONAL_ACCESS_TOKEN` replace personal access token with the one you generate
+- run `npm install -g @phoenx34/lt_cli`
+
+That's it! You should be able to run any of the lt-cli commands now from anywhere. Pulling the project is unnecessary.
+
+## Manual Installation
+
+### Prerequisites
 
 > _NOTE:_ These instructions assume you are using a mac, if you are using windows or linux, follow the pnpm install instructions from the installation reference.
 
@@ -9,7 +22,7 @@
   - `$ pnpm setup`
   - Follow prompt outputted in terminal. IE "to start using pnpm, run:`$ source ~/.zshrc`"lt (or bashrc)
 
-## Local Installation
+### Installation
 
 1. CD into root folder of project
 2. Run `$ pnpm pack` to install dependencies, build and pack the project
@@ -32,6 +45,7 @@
 - Coverage reports will be generated in a folder named coverage in the project.
 
 ### Notes:
+
 I chose to use PNPM for this project out of personal preference for a node package manager. It beats install times compared to both yarn and npm, and has better monorepo support. If you'd like to use yarn or npm, you can convert the project easily by following these steps:
 
 - Delete node_modules
@@ -39,4 +53,3 @@ I chose to use PNPM for this project out of personal preference for a node packa
 - Replace all pnpm calls to npm in package.json
 - Now you can run npm install
 
-You will notice that pnpm pack generates a .tgz file. The next steps for this project would be to publish the .tgz file to a node package registry, then to install the CLI, all you would need to do is `$ pnpm add -g @phoenx34/lt-cli` without even pulling this repository.
