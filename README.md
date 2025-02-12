@@ -7,6 +7,7 @@
 - Install PNPM [installation reference](https://pnpm.io/installation)
   - `$ brew install pnpm`
   - `$ pnpm setup`
+  - Follow prompt outputted in terminal. IE "to start using pnpm, run:`$ source ~/.zshrc`"lt (or bashrc)
 
 ## Local Installation
 
