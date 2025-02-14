@@ -34,6 +34,8 @@ That's it! You should be able to run any of the lt-cli commands now from anywher
 
 - `$ lt-cli photo --id=1`
   - Retrieves one photo based on the ID and presents it in a table view.
+- `$ lt-cli photo --name=retreat`
+  - Retrieves photo(s) based on the name or part of name that matches the title of any photo
 - `$ lt-cli albums`
   - Retrieves all photos in all albums. Presents each album in ordered list of tables, and each picture in the albums sorted by photo id.
 - `$ lt-cli albums --id=1`
