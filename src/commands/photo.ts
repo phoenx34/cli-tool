@@ -30,11 +30,14 @@ export default class GetPhoto extends Command {
       const table = TtyTable(TABLE_HEADERS, photoData);
       this.log(table.render());
     } else if (flags.name) { // Fetch the photo(s) data by name or keyword in name
+
       const albums: Album[] = await getAllAlbums();
+
       const photoData: Photo[] = albums.reduce((photoGroups: Photo[], album: Album) => {
         const photos = album.photos.filter((photo: Photo) => photo.title.toLowerCase().includes(flags.name!.toLowerCase()));
         return photoGroups.concat(photos);
       }, []);
+      
       const table = TtyTable(TABLE_HEADERS, photoData);
       this.log(table.render());
       return;

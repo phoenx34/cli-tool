@@ -1,6 +1,8 @@
 import { BASE_URL, HEADERS } from "../globals";
 import { Album, Photo } from "../types/types";
 
+// should add type-guarding
+
 // Reusable fetchData method using generic types
 const fetchData = async <T>(endpoint: string): Promise<T> => {
   const response = await fetch(`${BASE_URL}${endpoint}`, { headers: HEADERS });
