@@ -16,3 +16,13 @@ const fetchData = async <T>(endpoint: string): Promise<T> => {
 export const getPhotoById = async (photoId: string) => [await fetchData<Photo>(`/photos/${photoId}`)];
 export const getAllAlbums = async () => await fetchData<Album[]>(`/albums`);
 export const getAlbumById = async (albumId: string) => await fetchData<Photo[]>(`/albums/${albumId}`);
+
+export const getPhotoByIdAWS = async (photoId: string, url: string) => {
+  const response = await fetch(`${url}?photoId=${photoId}`, {headers: HEADERS });
+   if (!response.ok) {
+     throw new Error(
+       `Failed to fetch ${url}?photoId=${photoId}: ${response.statusText}`
+     );
+   }
+   return [(await response.json())] as Photo[];
+}

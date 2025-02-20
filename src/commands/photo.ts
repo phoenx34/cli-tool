@@ -1,8 +1,10 @@
 import { Flags, Command } from "@oclif/core";
-import { getAllAlbums, getPhotoById } from "../utils/api";
+import { getAllAlbums, getPhotoById, getPhotoByIdAWS } from "../utils/api";
 import TtyTable from "tty-table";
 import { TABLE_HEADERS } from "../globals";
 import { Album, Photo } from "../types/types";
+
+
 
 export default class GetPhoto extends Command {
   static description: string = 'Get a photo by its ID';
@@ -23,9 +25,11 @@ export default class GetPhoto extends Command {
 
   async run() {
     const { flags } = await this.parse(GetPhoto);
+    const PHOTOS_LAMBDA_URL =
+      "https://47te1d90p7.execute-api.us-east-2.amazonaws.com/prod";
 
     if (flags.id) { // Fetch the photo data by ID
-      const photoData: Photo[] = await getPhotoById(flags.id);
+      const photoData: Photo[] = await getPhotoByIdAWS(flags.id, PHOTOS_LAMBDA_URL); // experimental AWS photo caching
       // Render the table with the provided photo data
       const table = TtyTable(TABLE_HEADERS, photoData);
       this.log(table.render());
@@ -37,7 +41,7 @@ export default class GetPhoto extends Command {
         const photos = album.photos.filter((photo: Photo) => photo.title.toLowerCase().includes(flags.name!.toLowerCase()));
         return photoGroups.concat(photos);
       }, []);
-      
+
       const table = TtyTable(TABLE_HEADERS, photoData);
       this.log(table.render());
       return;
