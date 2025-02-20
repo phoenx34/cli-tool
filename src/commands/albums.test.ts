@@ -23,7 +23,7 @@ describe("Albums Command", () => {
     logSpy.mockRestore();
   });
 
-  test("should display all albums when no id is provided", async () => {
+  it("should display all albums when no id is provided", async () => {
     (getAllAlbums as jest.Mock).mockResolvedValue([
       {
         albumId: 1,
@@ -44,7 +44,7 @@ describe("Albums Command", () => {
     );
   });
 
-  test("should display photos for a specific album when id is provided", async () => {
+  it("should display photos for a specific album when id is provided", async () => {
     (getAlbumById as jest.Mock).mockResolvedValue([
       { albumId: 1, photoId: 1, title: "Photo 1" },
       { albumId: 1, photoId: 2, title: "Photo 2" },
@@ -60,7 +60,7 @@ describe("Albums Command", () => {
     );
   });
 
-  test("should display a table with photos", async () => {
+  it("should display a table with photos", async () => {
     (getAlbumById as jest.Mock).mockResolvedValue([
       { albumId: 1, photoId: 1, title: "Photo 1" },
       { albumId: 1, photoId: 2, title: "Photo 2" },

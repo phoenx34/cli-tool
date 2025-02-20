@@ -19,7 +19,7 @@ describe("Photo Command", () => {
     logSpy.mockRestore();
   });
 
-  test("should display a photo by ID", async () => {
+  it("should display a photo by ID", async () => {
     (getPhotoById as jest.Mock).mockResolvedValue([
       { id: 1, title: "Photo 1" },
     ]);
@@ -33,11 +33,11 @@ describe("Photo Command", () => {
     );
   });
 
-  test("should display an error message if no ID is provided", async () => {
+  it("should display an error message if no ID is provided", async () => {
     await expect(Photo.run([])).rejects.toThrow("Please provide a photo ID or name");
   });
 
-  test("should display a photo by Name", async () => {
+  it("should display a photo by Name", async () => {
     (getAllAlbums as jest.Mock).mockResolvedValue([
           {
             albumId: 1,
