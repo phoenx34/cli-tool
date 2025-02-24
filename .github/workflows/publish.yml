@@ -19,6 +19,7 @@ jobs:
           scope: '@phoenx34'
       - name: Install dependencies
         run: 
+          cd lt-cli
           corepack enable;
           corepack prepare pnpm@latest-8 --activate;
           export PNPM_HOME="${HOME}/Library/pnpm";
@@ -26,6 +27,7 @@ jobs:
           pnpm install;
       - name: Publish package
         run: 
+          cd lt-cli
           corepack enable;
           corepack prepare pnpm@latest-8 --activate;
           export PNPM_HOME="${HOME}/Library/pnpm";

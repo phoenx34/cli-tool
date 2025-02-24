@@ -1,9 +1,10 @@
 import { Command } from "@oclif/core";
-import { getAllAlbums, getPhotoById } from "../utils/api";
+import { getAllAlbums, getPhotoById, getPhotoByIdAWS } from "../utils/api";
 import Photo from "./photo";
 
 jest.mock("../utils/api", () => ({
   getPhotoById: jest.fn(),
+  getPhotoByIdAWS: jest.fn(),
   getAllAlbums: jest.fn(),
 }));
 
@@ -20,13 +21,16 @@ describe("Photo Command", () => {
   });
 
   test("should display a photo by ID", async () => {
-    (getPhotoById as jest.Mock).mockResolvedValue([
+    (getPhotoByIdAWS as jest.Mock).mockResolvedValue([
       { id: 1, title: "Photo 1" },
     ]);
 
     await Photo.run(["--id", "1"]);
 
-    expect(getPhotoById).toHaveBeenCalledWith("1");
+    expect(getPhotoByIdAWS).toHaveBeenCalledWith(
+      "1",
+      "https://47te1d90p7.execute-api.us-east-2.amazonaws.com/prod"
+    );
     expect(logSpy).toHaveBeenCalledTimes(1);
     expect(logSpy).toHaveBeenCalledWith(
       expect.stringContaining("Photo 1")

@@ -1,7 +1,7 @@
 import { enableFetchMocks, MockResponseInit } from "jest-fetch-mock";
 enableFetchMocks();
 import fetchMock from "jest-fetch-mock";
-import { getPhotoById, getAllAlbums, getAlbumById } from "./api"; 
+import { getPhotoById, getAllAlbums, getAlbumById, getPhotoByIdAWS } from "./api"; 
 
 describe("API Fetch Functions", () => {
   afterEach(() => {
@@ -22,6 +22,22 @@ describe("API Fetch Functions", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(result).toEqual([mockPhoto]);
   });
+
+  it("getPhotoByIdAWS fetches a photo by ID", async () => {
+    const mockPhoto = {
+      id: "1",
+      title: "Test Photo",
+      url: "http://example.com/photo.jpg",
+    };
+    fetchMock.mockResponseOnce(JSON.stringify(mockPhoto));
+
+    const result = await getPhotoByIdAWS(
+      "1",
+      "https://some.url"
+    );
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(result).toEqual([mockPhoto]);
+  })
 
   it("getAllAlbums fetches all albums", async () => {
     const mockAlbums = [
@@ -51,5 +67,11 @@ describe("API Fetch Functions", () => {
     fetchMock.mockResponseOnce("", { status: 404, statusText: "Not Found" });
 
     await expect(getPhotoById("999")).rejects.toThrow("Failed to fetch");
+  });
+
+  it("AWS fetch function throw an error when response is not ok", async () => {
+    fetchMock.mockResponseOnce("", { status: 404, statusText: "Not Found" });
+
+    await expect(getPhotoByIdAWS("999", "https://some.url")).rejects.toThrow("Failed to fetch");
   });
 });

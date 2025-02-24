@@ -25,8 +25,9 @@ That's it! You should be able to run any of the lt-cli commands now from anywher
 ### Installation
 
 1. CD into root folder of project
-2. Run `$ pnpm pack` to install dependencies, build and pack the project
-3. Run `$ pnpm add -g "$(pwd)"`to install the CLI tool to your computer
+2. CD into "lt-cli"
+3. Run `$ pnpm pack` to install dependencies, build and pack the project
+4. Run `$ pnpm add -g "$(pwd)"`to install the CLI tool to your computer
 
 ## Usage
 

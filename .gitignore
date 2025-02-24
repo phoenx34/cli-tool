@@ -2,3 +2,7 @@
 /dist
 /coverage
 /*.tgz
+**/node_modules
+**/*.tgz
+**/dist
+**/coverage

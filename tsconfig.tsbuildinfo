@@ -1,1 +1,0 @@
-{"root":["./bin/run.ts","./src/config.ts","./src/index.ts","./src/commands/get-photo.ts","./src/utils/api.ts"],"errors":true,"version":"5.7.3"}
